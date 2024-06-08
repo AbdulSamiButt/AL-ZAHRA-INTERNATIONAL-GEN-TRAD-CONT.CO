@@ -81,7 +81,8 @@
                     </h3>
                 </div>
 
-                <img src="assets/img/home5.png" alt="" class="home__img">
+                <img src="assets/img/home5.png" alt="" class="home__img" id="homeImage">
+                
                 <div class="home__car">
                     <div class="home__car-data">
                         <div class="home__car-icon">
@@ -111,14 +112,11 @@
 
                 </div>
 
-                <a href="#" class="home__button">START</a>
+                <a href="#" class="home__button" id="startButton">START</a>
+           
 
                 <div class="slider__bg">
-                <div class="slider__bg-navBtn active"></div>
-                <div class="slider__bg-navBtn"></div>
-                <div class="slider__bg-navBtn"></div>
-                <div class="slider__bg-navBtn"></div>
-                <div class="slider__bg-navBtn"></div>
+            
                 
                 </div>
 
@@ -503,7 +501,20 @@
     <!--=============== MAIN JS ===============-->
     <script src="assets/js/main.js"></script>
 
+    <script>
+document.getElementById('startButton').addEventListener('click', function(event) {
+  event.preventDefault();
+  const homeImage = document.getElementById('homeImage');
+  homeImage.classList.add('moving'); // Start the animation
 
+  // Stop the animation after 5 seconds
+  setTimeout(() => {
+    homeImage.classList.remove('moving');
+  }, 5000);
+});
+
+
+      </script>
 
 </body>
 
