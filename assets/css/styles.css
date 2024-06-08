@@ -411,9 +411,12 @@ padding-top: 9rem;
   margin-bottom: .75rem;
 
 }
-.home__button{
+.home__button {
   z-index: 888;
-  position: relative;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border: 2px solid hsl(158, 89%, 30%);
   width: 70px;
   height: 70px;
@@ -421,14 +424,22 @@ padding-top: 9rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-self: center;
   cursor: pointer;
-  font-size: var(--small-font-size);
+  font-size: 0.8rem; /* Adjust as needed */
   color: var(--white-color);
   font-weight: var(--font-medium);
 }
 
-.home__button::before{
+/* Adjust the size of the button for smaller screens */
+@media only screen and (max-width: 600px) {
+  .home__button {
+    width: 50px;
+    height: 50px;
+    font-size: 0.6rem; /* Adjust as needed */
+  }
+}
+
+.home__button::before {
   content: '';
   border: 2px solid hsl(158, 98%, 43%);
   width: 90px;
@@ -437,9 +448,30 @@ padding-top: 9rem;
   border-radius: 50%;
   box-shadow: 0 0 12px hsl(158, 98%, 43%);
   transition: .3s;
-  animation: button 3s infinite; 
-
+  animation: button 3s infinite;
 }
+
+@keyframes button {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+
+@keyframes moveForward {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(200px); /* Adjust distance as needed */
+  }
+}
+
+.home__img.moving {
+  animation: moveForward 5s linear forwards; /* Animation forwards to retain final state */
+}
+
+
 
 .home__social{
   z-index: 888;
